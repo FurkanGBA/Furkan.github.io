@@ -2,85 +2,120 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Benim Kişisel Blogum</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
+      font-family: 'Roboto', sans-serif;
+      background: #f3f4f6;
       color: #333;
-      max-width: 800px;
-      margin: auto;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1000px;
+      width: 100%;
       padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
     h1 {
       text-align: center;
       color: #2c3e50;
+      font-size: 36px;
+      margin-bottom: 30px;
     }
     .post {
       background: #fff;
-      padding: 20px;
+      padding: 25px;
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+    .post:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
     .post h2 {
-      margin-top: 0;
       color: #34495e;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+    .post p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .post ul {
+      list-style-type: square;
+      margin-left: 20px;
+    }
+    .post ul li {
+      margin-bottom: 8px;
     }
     .footer {
       text-align: center;
-      margin-top: 40px;
       color: #888;
       font-size: 14px;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
     }
     .nav {
       text-align: center;
       margin-top: 30px;
     }
     .nav a {
-      margin: 0 10px;
+      margin: 0 15px;
+      font-size: 18px;
+      font-weight: 600;
       text-decoration: none;
       color: #2c3e50;
-      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: #ecf0f1;
+      transition: all 0.3s ease;
     }
     .nav a:hover {
-      text-decoration: underline;
+      background: #3498db;
+      color: white;
+      box-shadow: 0 0 10px rgba(52,152,219,0.3);
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Merhaba, ben Furkan.</h1>
 
-  <h1>Merhaba, ben Furkan.</h1>
+    <div class="post">
+      <h2>Giriş</h2>
+      <p>Sayfama hoş geldiniz! Burada, beni ve çevremi etkileyen olaylardan, düşüncelerimden ve hayatımdan notlar paylaşacağım.</p>
+      <p><i>İlk yayın tarihi: 8 Mayıs 2025</i></p>
+    </div>
 
-  <div class="post">
-    <h2>Giriş</h2>
-    <p>Sayfama hoş geldiniz! Düşüncelerimi, ilgi alanlarımı ve yaşadıklarımdan çıkardığım notları burada paylaşacağım.</p>
-    <p><i>İlk yayın tarihi: 8 Mayıs 2025</i></p>
+    <div class="post">
+      <h2>Neler Paylaşacağım?</h2>
+      <ul>
+        <li>Beni ve çevremi etkileyen olaylar</li>
+        <li>Derin düşüncelerimin çatışması</li>
+        <li>Hayattan küçük notlar</li>
+      </ul>
+    </div>
+
+    <div class="nav">
+      <a href="benkimim.html">Ben Kimim?</a>
+      <a href="iletisim.html">İletişim</a>
+    </div>
+
+    <div class="footer">
+      © 2025 - Bu site GitHub Pages ile oluşturulmuştur.
+    </div>
   </div>
-
-  <div class="post">
-    <h2>Neler Paylaşacağım?</h2>
-    <ul>
-      <li>Beni ve çevremi etkileyen olaylar</li>
-      <li>Derin düşüncelerimin çatışması</li>
-      <li>Hayattan küçük notlar</li>
-    </ul>
-  </div>
-
-  <div class="nav">
-    <a href="benkimim.html">Ben Kimim?</a>
-    <a href="iletisim.html">İletişim</a>
-  </div>
-
-  <div class="footer">
-    © 2025 - Bu site GitHub Pages ile oluşturulmuştur.
-  </div>
-
-</body>
-</html>
-
-
 </body>
 </html>
 
