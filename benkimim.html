@@ -3,26 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ben Kimim?</title>
+  <title>Ben Kimim? - Furkan'ın Blogu</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: 50px auto;
-      padding: 20px;
-      background: #f9f9f9;
-      border-radius: 10px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      color: #2c3e50;
     }
-    h1 {
-      color: #333;
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+
+    nav {
+      background-color: #34495e;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f1c40f;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #34495e;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6em;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Ben Kimim?</h1>
-  <p>Merhaba! Ben Furkan Çığır, bu sayfa kişisel blog sitemin bir parçası olarak hazırlandı.</p>
-  <p>bu sayfada günlük yaşam ya da ilgilendiğim konular hakkında burada yazılar paylaşıyorum. Kahramanmaraş Çukurova Elektrik Anadolu Lisesinde 11. sınıf öğrencisiyim. Kariyer hedefim tıp ve ya yazılım alanında bir mesleğe sahip olmak.</p>
-  <p>İletişim için: dr.furkancigir@gmail.com</p>
-  <p><a href="index.html">← Ana Sayfaya Dön</a></p>
+
+  <header>
+    <h1>Ben Kimim?</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="benkimim.html">Ben Kimim?</a>
+  </nav>
+
+  <div class="container">
+    <h2>Merhaba, ben Furkan Çığır</h2>
+    <p>Kahramanmaraş Çukurova Elektrik Anadolu Lisesi'nde 11. sınıf öğrencisiyim. Bu blogu, hayatımdan kesitler paylaşmak, düşündüğüm şeyleri yazıya dökmek ve gelecekte kendime dönüp bakmak için oluşturdum.</p>
+    <p>İlgi alanlarım arasında teknoloji, yazılım ve insan sağlığı bulunuyor. İleride tıp ya da yazılım alanında bir kariyer hedefliyorum. Bu iki alanın da hem insanlığa katkı hem de kişisel gelişim açısından çok değerli olduğunu düşünüyorum.</p>
+    <p>Boş zamanlarımda araştırma yapmayı, yazı yazmayı ve yeni şeyler öğrenmeyi severim. Bu site de bu tutkularımın bir ürünü.</p>
+    <p><strong>İletişim:</strong> <a href="mailto:dr.furkancigir@gmail.com">dr.furkancigir@gmail.com</a></p>
+  </div>
+
+  <div class="footer">
+    © 2025 Furkan - Tüm hakları saklıdır.
+  </div>
+
 </body>
 </html>
+
