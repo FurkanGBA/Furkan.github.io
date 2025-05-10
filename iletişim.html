@@ -65,16 +65,27 @@
             justify-content: center;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 40px;
         }
         .info a {
-            color: #e74c3c;
+            color: #fff;
             font-size: 1.5em;
             text-decoration: none;
             margin: 10px;
-            transition: color 0.3s ease-in-out;
+            padding: 20px;
+            border-radius: 8px;
+            width: 250px;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out;
         }
         .info a:hover {
-            color: #1abc9c;
+            background-color: #1abc9c;
+        }
+        .instagram {
+            background-color: #f39c12;
+        }
+        .github {
+            background-color: #e74c3c;
         }
         .contact-form {
             max-width: 700px;
@@ -140,9 +151,8 @@
 <section>
     <h2>İletişim Bilgilerim</h2>
     <div class="info">
-        <p><strong>E-posta:</strong> furkancigir@example.com</p>
-        <a href="https://www.instagram.com/furkan_cigir_?igsh=MWI5bGdwb29oNnRscA==" target="_blank">Instagram: @furkan_cigir_</a>
-        <a href="https://github.com/FurkanGBA" target="_blank">GitHub: FurkanGBA</a>
+        <a href="https://www.instagram.com/furkan_cigir_?igsh=MWI5bGdwb29oNnRscA==" target="_blank" class="instagram">Instagram: @furkan_cigir_</a>
+        <a href="https://github.com/FurkanGBA" target="_blank" class="github">GitHub: FurkanGBA</a>
     </div>
 
     <div class="contact-form">
