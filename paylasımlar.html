@@ -1,199 +1,92 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Furkan'ın Paylaşımları</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f0f3f5;
-      color: #2c3e50;
-    }
-    header {
-      background: linear-gradient(45deg, #f39c12, #e74c3c);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    nav {
-      background: #34495e;
-      padding: 15px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 1.2em;
-    }
-    nav a:hover {
-      color: #1abc9c;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-    .post-title {
-      background: #fd9644;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .post-title:hover {
-      background: #fa8231;
-    }
-    .post-content {
-      background: #ffffff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      display: none;
-    }
-    .comment-box {
-      margin-top: 10px;
-    }
-    .comment-box input {
-      width: 70%;
-      padding: 8px;
-      margin-right: 5px;
-    }
-    .comment-box button {
-      padding: 8px 15px;
-      background: #e67e22;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    #shareSection, #passwordSection {
-      margin-top: 30px;
-      text-align: center;
-    }
-    textarea, input[type="text"], input[type="password"] {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 10px 20px;
-      border: none;
-      background: #e74c3c;
-      color: white;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #c0392b;
-    }
-    ul {
-      padding-left: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paylaşımlar</title>
+    <style>
+        /* Burada sitenin ana tasarımını tekrarlayabilirsin */
+    </style>
 </head>
 <body>
+    <h1>Paylaşımlar</h1>
+    <div id="posts"></div>
 
-<header>
-  <h1>Furkan'ın Paylaşımları</h1>
-  <p>Düşünceler, anılar ve daha fazlası</p>
-</header>
+    <h2>Paylaşım Ekle</h2>
+    <form id="addPostForm">
+        <input type="text" id="title" placeholder="Başlık" required><br><br>
+        <textarea id="content" placeholder="İçerik" required></textarea><br><br>
+        <input type="password" id="adminPassword" placeholder="Şifre" required><br><br>
+        <button type="submit">Paylaşım Ekle</button>
+    </form>
 
-<nav>
-  <a href="index.html">Ana Sayfa</a>
-  <a href="benkimim.html">Ben Kimim</a>
-  <a href="iletişim.html">İletişim</a>
-</nav>
+    <h2>Yorum Ekle</h2>
+    <form id="addCommentForm">
+        <input type="text" id="username" placeholder="Kullanıcı Adı" required><br><br>
+        <textarea id="comment" placeholder="Yorum" required></textarea><br><br>
+        <button type="submit">Yorum Ekle</button>
+    </form>
 
-<div class="container">
-  <div id="postList"></div>
+    <script>
+        // Paylaşımları yükle
+        async function loadPosts() {
+            const response = await fetch('/');
+            const posts = await response.json();
+            const postsContainer = document.getElementById('posts');
+            postsContainer.innerHTML = '';
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                    <h4>Yorumlar:</h4>
+                    ${post.comments.map(comment => `<p><strong>${comment.username}:</strong> ${comment.comment}</p>`).join('')}
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        }
 
-  <div id="passwordSection">
-    <h3>Paylaşım Yapmak İçin Giriş:</h3>
-    <input type="password" id="passwordInput" placeholder="Şifre">
-    <button onclick="checkPassword()">Giriş</button>
-    <p>Sadece Furkan paylaşım yapabilir.</p>
-  </div>
+        loadPosts();
 
-  <div id="shareSection" style="display:none;">
-    <h3>Yeni Paylaşım</h3>
-    <input type="text" id="postTitle" placeholder="Başlık"><br>
-    <textarea id="postContent" rows="5" placeholder="İçeriği yaz..."></textarea><br>
-    <button onclick="addPost()">Paylaş</button>
-  </div>
-</div>
+        // Paylaşım ekleme
+        document.getElementById('addPostForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            const response = await fetch('/add-post', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title, content, password })
+            });
 
-<script>
-  let posts = [];
-  const correctPassword = "1281";
+            const data = await response.json();
+            alert(data.message);
+            loadPosts();
+        });
 
-  function checkPassword() {
-    const pw = document.getElementById("passwordInput").value;
-    if (pw === correctPassword) {
-      document.getElementById("shareSection").style.display = "block";
-      document.getElementById("passwordSection").style.display = "none";
-    } else {
-      alert("Yanlış şifre!");
-    }
-  }
+        // Yorum ekleme
+        document.getElementById('addCommentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const comment = document.getElementById('comment').value;
+            const postId = prompt("Yorum eklemek istediğiniz paylaşımın ID'sini girin");
 
-  function addPost() {
-    const title = document.getElementById("postTitle").value.trim();
-    const content = document.getElementById("postContent").value.trim();
-    if (title && content) {
-      posts.unshift({ title, content, comments: [] });
-      document.getElementById("postTitle").value = "";
-      document.getElementById("postContent").value = "";
-      renderPosts();
-    }
-  }
+            const response = await fetch(`/add-comment/${postId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, comment })
+            });
 
-  function toggleContent(index) {
-    const contentDiv = document.getElementById(`content-${index}`);
-    contentDiv.style.display = contentDiv.style.display === "none" ? "block" : "none";
-  }
-
-  function addComment(index) {
-    const input = document.getElementById(`commentInput-${index}`);
-    const comment = input.value.trim();
-    if (comment) {
-      posts[index].comments.push(comment);
-      input.value = "";
-      renderPosts();
-    }
-  }
-
-  function renderPosts() {
-    const container = document.getElementById("postList");
-    container.innerHTML = "";
-    posts.forEach((post, index) => {
-      const postHTML = `
-        <div class="post-title" onclick="toggleContent(${index})">
-          ${post.title}
-        </div>
-        <div class="post-content" id="content-${index}">
-          <p>${post.content}</p>
-          <hr>
-          <strong>Yorumlar:</strong>
-          <ul>${post.comments.map(c => `<li>${c}</li>`).join("")}</ul>
-          <div class="comment-box">
-            <input type="text" id="commentInput-${index}" placeholder="Yorum yaz...">
-            <button onclick="addComment(${index})">Gönder</button>
-          </div>
-        </div>
-      `;
-      container.innerHTML += postHTML;
-    });
-  }
-
-  renderPosts();
-</script>
-
+            const data = await response.json();
+            alert(data.message);
+            loadPosts();
+        });
+    </script>
 </body>
 </html>
