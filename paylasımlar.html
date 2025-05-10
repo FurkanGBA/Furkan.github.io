@@ -84,6 +84,7 @@
             border-radius: 10px;
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 250px;
         }
 
         .content div:hover {
@@ -180,6 +181,14 @@
         .footer a:hover {
             color: #1abc9c;
         }
+
+        /* For Shown Message */
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -198,31 +207,21 @@
 <section>
     <h2>Yeni Paylaşım Yap</h2>
 
-    <div class="post-form">
-        <form id="postForm">
-            <input type="text" id="postTitle" placeholder="Başlık" required>
-            <textarea id="postContent" rows="5" placeholder="Paylaşımınızı buraya yazın..." required></textarea>
-            <button type="submit">Paylaş</button>
-        </form>
+    <div id="loginSection" class="post-form">
+        <input type="password" id="password" placeholder="Şifrenizi girin" required>
+        <button onclick="checkPassword()">Paylaşım Yap</button>
     </div>
 
-    <div class="content">
-        <div>
-            <h3>Paylaşım Başlığı 1</h3>
-            <p>Bu, paylaşılan ilk yazıdır. İçerik burada yer alacak...</p>
-            <div class="comment-section">
-                <textarea placeholder="Yorumunuzu buraya yazın..."></textarea><br>
-                <button>Yorum Yap</button>
-            </div>
-        </div>
-        <div>
-            <h3>Paylaşım Başlığı 2</h3>
-            <p>Bu, paylaşılan ikinci yazıdır. İçerik burada yer alacak...</p>
-            <div class="comment-section">
-                <textarea placeholder="Yorumunuzu buraya yazın..."></textarea><br>
-                <button>Yorum Yap</button>
-            </div>
-        </div>
+    <div id="message" class="message"></div>
+
+    <div id="postSection" class="post-form" style="display:none;">
+        <input type="text" id="postTitle" placeholder="Başlık" required>
+        <textarea id="postContent" rows="5" placeholder="Paylaşımınızı buraya yazın..." required></textarea>
+        <button onclick="addPost()">Paylaş</button>
+    </div>
+
+    <div class="content" id="postsSection">
+        <!-- Paylaşımlar burada listelenecek -->
     </div>
 </section>
 
@@ -231,27 +230,75 @@
 </div>
 
 <script>
-    document.getElementById("postForm").addEventListener("submit", function(event){
-        event.preventDefault();
+    let posts = [];  // Posts array to store posts (in a real app, this would come from a database)
 
-        var title = document.getElementById("postTitle").value;
-        var content = document.getElementById("postContent").value;
+    // Check password and show post section if correct
+    function checkPassword() {
+        const password = document.getElementById('password').value;
+        const correctPassword = "1281";
+        if (password === correctPassword) {
+            document.getElementById('loginSection').style.display = "none";
+            document.getElementById('postSection').style.display = "block";
+            document.getElementById('message').style.display = "none";  // Hide the message
+        } else {
+            document.getElementById('message').innerHTML = "Sadece Furkan paylaşım yapabilir.";
+        }
+    }
 
-        var newPost = `
-            <div>
-                <h3>${title}</h3>
-                <p>${content}</p>
+    // Add new post to the posts array and display it
+    function addPost() {
+        const title = document.getElementById('postTitle').value;
+        const content = document.getElementById('postContent').value;
+        
+        if (title && content) {
+            const newPost = { title, content, comments: [] };
+            posts.push(newPost);
+
+            // Clear form fields
+            document.getElementById('postTitle').value = "";
+            document.getElementById('postContent').value = "";
+
+            renderPosts();
+        }
+    }
+
+    // Render posts and comments on the page
+    function renderPosts() {
+        const postsSection = document.getElementById('postsSection');
+        postsSection.innerHTML = "";  // Clear current posts
+
+        posts.forEach(post => {
+            const postDiv = document.createElement("div");
+            postDiv.innerHTML = `
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
                 <div class="comment-section">
                     <textarea placeholder="Yorumunuzu buraya yazın..."></textarea><br>
-                    <button>Yorum Yap</button>
+                    <button onclick="addComment(event)">Yorum Yap</button>
                 </div>
-            </div>
-        `;
+                <div class="comments-list">
+                    ${post.comments.map(comment => `<p>${comment}</p>`).join('')}
+                </div>
+            `;
+            postsSection.appendChild(postDiv);
+        });
+    }
 
-        document.querySelector(".content").innerHTML += newPost;
-        document.getElementById("postTitle").value = "";
-        document.getElementById("postContent").value = "";
-    });
+    // Add comment to a post
+    function addComment(event) {
+        const commentText = event.target.previousElementSibling.value;
+        if (commentText) {
+            // Find the corresponding post and add the comment
+            const postDiv = event.target.parentElement.parentElement;
+            const postIndex = Array.from(postDiv.parentElement.children).indexOf(postDiv);
+            posts[postIndex].comments.push(commentText);
+
+            // Clear the comment box
+            event.target.previousElementSibling.value = "";
+
+            renderPosts();
+        }
+    }
 </script>
 
 </body>
