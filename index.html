@@ -1,207 +1,95 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Benim Kişisel Blogum</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #f0f0f0;
-      overflow-x: hidden;
-    }
-    .hero {
-      height: 100vh;
-      background: linear-gradient(135deg, #ff7b7b, #ffcc70);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      flex-direction: column;
-      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
-    }
-    .hero h1 {
-      font-size: 50px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-    }
-    .hero p {
-      font-size: 20px;
-      font-weight: 300;
-      margin-bottom: 30px;
-    }
-    .hero .cta-btn {
-      padding: 15px 30px;
-      background-color: #3498db;
-      border: none;
-      border-radius: 25px;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .hero .cta-btn:hover {
-      background-color: #2980b9;
-      transform: scale(1.05);
-    }
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #2c3e50;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-    }
-    section p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #7f8c8d;
-      margin-bottom: 30px;
-    }
-    .content {
-      background-color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-    .content:hover {
-      box-shadow: 0 10px 60px rgba(0, 0, 0, 0.2);
-      transform: translateY(-10px);
-    }
-    .content ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    .content ul li {
-      background-color: #ecf0f1;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 8px;
-      color: #34495e;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-    .content ul li:hover {
-      background-color: #3498db;
-      color: white;
-    }
-    .footer {
-      background: #34495e;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-      position: relative;
-      bottom: 0;
-      width: 100%;
-      font-size: 14px;
-    }
-    .nav {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
-    }
-    .nav a {
-      padding: 15px 25px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #2c3e50;
-      text-decoration: none;
-      border-radius: 30px;
-      background-color: #fff;
-      margin: 0 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s, transform 0.3s;
-    }
-    .nav a:hover {
-      background-color: #3498db;
-      color: white;
-      transform: translateY(-3px);
-    }
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s forwards;
-    }
-    .scroll-animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furkan's Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .content div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .content div:hover {
+            transform: scale(1.05);
+        }
+        .footer {
+            background: #34495e;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="hero">
-    <h1>Merhaba, Ben Furkan</h1>
-    <p>Kişisel bloguma hoş geldiniz! Düşüncelerimi ve paylaşımlarımı burada bulabilirsiniz.</p>
-    <a href="#about" class="cta-btn">Hakkımda</a>
-  </div>
+<header>
+    <h1>Merhaba, ben Furkan</h1>
+    <p>Bloguma hoşgeldiniz!</p>
+</header>
 
-  <section id="about" class="scroll-animate">
-    <h2>Hakkımda</h2>
+<section>
+    <h2>Paylaşacaklarım</h2>
+    <p>Burada düşüncelerimi, günlük hayattan olayları ve hatta şiirlerimi paylaşacağım.</p>
     <div class="content">
-      <p>Merhaba! Ben Furkan Çığır, Kahramanmaraş'ta doğup büyüdüm ve şu anda Çukurova Elektrik Anadolu Lisesi'nde 11. sınıf öğrencisiyim. Küçük yaştan beri teknoloji ve yazılım alanlarına ilgi duyuyorum. Bu blogda, hayatımda önemli yer tutan konularda yazılar paylaşıyorum. Amacım hem öğrendiklerimi başkalarına aktarmak hem de kendi düşünce dünyamı keşfetmektir.
-
-Boş zamanlarımda kitap okumayı, yeni teknolojileri keşfetmeyi ve yazılım geliştirmeyi seviyorum. Ayrıca kedilere olan ilgim de oldukça büyük. Bu blogda zaman zaman bu hobilerimle ilgili yazılarımı da bulabilirsiniz.
-
-Blogumda teknoloji, yazılım, kişisel gelişim ve günlük yaşamla ilgili içerikler paylaşacağım. Yazılarımda öğrendiklerimi ve karşılaştığım zorlukları paylaşıp, hem kendi deneyimlerimden hem de başkalarının hikayelerinden öğrenmek istiyorum. Bu blogu, kendi yolculuğumu anlatırken aynı zamanda topluluk oluşturmak ve birlikte büyümek için kullanacağım.
-
-Gelecekte, yazılım ve tıp alanlarında kariyer yapmayı planlıyorum. Bu blog sayesinde yolculuğumda öğrendiklerimi ve karşılaştığım yeni fikirleri paylaşarak bir adım daha ilerlemeyi hedefliyorum.</p>
+        <div>
+            <h3>Düşünceler</h3>
+            <p>Hayat, bazen küçük düşüncelerle büyük anlamlar kazanır. Burada, bunları sizlerle paylaşacağım.</p>
+        </div>
+        <div>
+            <h3>Günlük Hayat</h3>
+            <p>Günlük yaşantımda karşılaştığım ilginç olaylar ve anlar hakkında yazacağım.</p>
+        </div>
+        <div>
+            <h3>Şiirler</h3>
+            <p>Farklı duyguların izinde yazılmış şiirlerimi burada bulabilirsiniz.</p>
+        </div>
     </div>
-  </section>
+</section>
 
-  <section id="posts" class="scroll-animate">
-    <h2>Paylaşımlar</h2>
-    <div class="content">
-      <ul>
-        <li>Beni etkileyen olaylar ve düşünceler</li>
-        <li>Hayatımda önemli anlar</li>
-        <li>Teknoloji ve yazılım üzerine yazılar</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="contact" class="scroll-animate">
-    <h2>İletişim</h2>
-    <div class="content">
-      <p>İletişim için bana e-posta gönderebilirsiniz: <strong>dr.furkancigir@gmail.com</strong></p>
-    </div>
-  </section>
-
-  <div class="footer">
-    © 2025 - Bu site GitHub Pages ile oluşturulmuştur.
-  </div>
-
-  <script>
-    // Scroll animasyonları
-    const sections = document.querySelectorAll('.scroll-animate');
-    const checkVisibility = () => {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 1.2) {
-          section.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', checkVisibility);
-    checkVisibility();  // Sayfa yüklendiğinde hemen kontrol et
-  </script>
+<div class="footer">
+    <p>&copy; 2025 Furkan Blog | <a href="benkimim.html" style="color: #fff;">Ben Kimim</a> | <a href="paylasımlar.html" style="color: #fff;">Paylaşımlar</a> | <a href="iletişim.html" style="color: #fff;">İletişim</a></p>
+</div>
 
 </body>
 </html>
