@@ -1,131 +1,164 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>İletişim - Furkan Çığır</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #fceabb, #f8b500);
-      color: #333;
-    }
-
-    header {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #444;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    nav a:hover {
-      color: #e94e77;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 32px;
-      color: #d9486d;
-    }
-
-    .info {
-      text-align: center;
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .info p {
-      margin: 10px 0;
-    }
-
-    .info a {
-      color: #d9486d;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    input, textarea {
-      padding: 14px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-    }
-
-    button {
-      padding: 14px;
-      background-color: #d9486d;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #b7385a;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Furkan Çığır</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f3f5;
+            color: #2c3e50;
+        }
+        header {
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            color: #fff;
+            padding: 70px 20px;
+            text-align: center;
+            border-bottom: 5px solid #c0392b;
+        }
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        header p {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        nav {
+            background: #34495e;
+            padding: 20px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #fff;
+            font-size: 1.2em;
+            margin: 0 25px;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        nav a:hover {
+            color: #1abc9c;
+            transform: scale(1.1);
+        }
+        section {
+            padding: 60px 20px;
+            background: #ecf0f1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 3em;
+            text-align: center;
+            color: #2980b9;
+            margin-bottom: 30px;
+        }
+        .info {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .info a {
+            color: #e74c3c;
+            font-size: 1.5em;
+            text-decoration: none;
+            margin: 10px;
+            transition: color 0.3s ease-in-out;
+        }
+        .info a:hover {
+            color: #1abc9c;
+        }
+        .contact-form {
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            font-size: 1.1em;
+        }
+        .contact-form button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #c0392b;
+        }
+        .footer {
+            background: #34495e;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        .footer a:hover {
+            color: #1abc9c;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h2>İletişim Sayfası</h2>
-    <nav>
-      <a href="index.html">Ana Sayfa</a>
-      <a href="benkimim.html">Ben Kimim</a>
-      <a href="paylasimlar.html">Paylaşımlar</a>
-      <a href="iletisim.html">İletişim</a>
-    </nav>
-  </header>
+<header>
+    <h1>İletişim</h1>
+    <p>Benimle İletişime Geç!</p>
+</header>
 
-  <div class="container">
-    <h1>Benimle İletişime Geç</h1>
+<nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="benkimim.html">Ben Kimim</a>
+    <a href="paylasimlar.html">Paylaşımlar</a>
+    <a href="iletisim.html">İletişim</a>
+</nav>
+
+<section>
+    <h2>İletişim Bilgilerim</h2>
     <div class="info">
-      <p><strong>E-posta:</strong> furkancigir@example.com</p>
-      <p><strong>Instagram:</strong> <a href="https://www.instagram.com/furkan_cigir_?igsh=MWI5bGdwb29oNnRscA==" target="_blank">@furkan_cigir_</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/FurkanGBA" target="_blank">github.com/FurkanGBA</a></p>
+        <p><strong>E-posta:</strong> furkancigir@example.com</p>
+        <a href="https://www.instagram.com/furkan_cigir_?igsh=MWI5bGdwb29oNnRscA==" target="_blank">Instagram: @furkan_cigir_</a>
+        <a href="https://github.com/FurkanGBA" target="_blank">GitHub: FurkanGBA</a>
     </div>
 
-    <form action="https://formspree.io/f/myzwpaby" method="POST">
-      <input type="text" name="name" placeholder="Adınız" required />
-      <input type="email" name="email" placeholder="E-posta adresiniz" required />
-      <textarea name="message" rows="6" placeholder="Mesajınız" required></textarea>
-      <button type="submit">Gönder</button>
-    </form>
-  </div>
+    <div class="contact-form">
+        <h3>Mesaj Gönderin</h3>
+        <form action="https://formspree.io/f/myzwpaby" method="POST">
+            <input type="text" name="name" placeholder="Adınız" required />
+            <input type="email" name="email" placeholder="E-posta adresiniz" required />
+            <textarea name="message" rows="6" placeholder="Mesajınız" required></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+    </div>
+</section>
+
+<div class="footer">
+    <p>&copy; 2025 Furkan Blog | <a href="benkimim.html">Ben Kimim</a> | <a href="paylasımlar.html">Paylaşımlar</a> | <a href="iletisim.html">İletişim</a></p>
+</div>
 
 </body>
 </html>
